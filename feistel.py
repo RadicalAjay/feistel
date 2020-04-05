@@ -23,7 +23,7 @@ class FeistelNetwork():
         # [Prekey: 64] [R x Subkeys: 32] [Postkey: 64]
         keys = {
             "prekey" : key_data[0:block_size],
-            "roundkeys" : [key_data[3 * half_block_size * a: 2 * half_block_size * a + half_block_size] for a in range(round_count)],
+            "roundkeys" : [ key_data[ block_size + ( a * half_block_size) : block_size + (( a + 1 ) * half_block_size)] for a in range(round_count) ],
             "postkey" : key_data[-block_size:],
         }
       
